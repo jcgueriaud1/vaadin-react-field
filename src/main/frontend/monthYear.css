@@ -1,0 +1,6 @@
+.month-year-custom .month-year-picker {
+    margin-top: 0;
+}
+.month-year-custom .month-year-picker .caption {
+     display: none;
+ }

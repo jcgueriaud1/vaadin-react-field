@@ -3,9 +3,13 @@ package com.example.application.ui.components;
 import java.time.YearMonth;
 
 import com.vaadin.flow.component.AbstractCompositeField;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.HasHelper;
+import com.vaadin.flow.component.HasLabel;
+import com.vaadin.flow.component.dependency.CssImport;
 
 public class MonthYearField
-        extends AbstractCompositeField<InternalMonthYear, MonthYearField, YearMonth> {
+        extends AbstractCompositeField<InternalMonthYear, MonthYearField, YearMonth> implements HasLabel, HasHelper {
 
     public MonthYearField() {
         this(YearMonth.now());
@@ -42,5 +46,30 @@ public class MonthYearField
     protected boolean valueEquals(YearMonth value1, YearMonth value2) {
         System.out.println("valueEquals");
         return super.valueEquals(value1, value2);
+    }
+
+    @Override
+    public void setLabel(String label) {
+        getContent().setLabel(label);
+    }
+
+    @Override
+    public String getLabel() {
+        return getContent().getLabel();
+    }
+
+    @Override
+    public void setHelperComponent(Component component) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void setHelperText(String helperText) {
+        getContent().setHelperText(helperText);
+    }
+
+    @Override
+    public String getHelperText() {
+        return getContent().getHelperText();
     }
 }

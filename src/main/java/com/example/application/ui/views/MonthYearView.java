@@ -30,6 +30,8 @@ public class MonthYearView extends VerticalLayout {
         binder.bindInstanceFields(this);
         binder.setBean(new DataBean());
         add(new HorizontalLayout(startMonthYear, endMonthYear), span);
+        startMonthYear.setLabel("Start Date");
+        startMonthYear.setHelperText("Helper text");
         startMonthYear.addValueChangeListener(e -> {
             if (e.isFromClient()) {
                 Notification.show("Value updated from the client " + e.getValue().toString());

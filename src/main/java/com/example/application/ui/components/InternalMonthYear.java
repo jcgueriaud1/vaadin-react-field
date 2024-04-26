@@ -3,13 +3,18 @@ package com.example.application.ui.components;
 import java.time.YearMonth;
 import java.util.function.Consumer;
 
+import com.vaadin.flow.component.HasHelper;
+import com.vaadin.flow.component.HasLabel;
+import com.vaadin.flow.component.HasPlaceholder;
 import com.vaadin.flow.component.Tag;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 import com.vaadin.flow.component.react.ReactAdapterComponent;
 
+@CssImport("./monthYear.css")
 @JsModule("./monthYear.tsx")
 @Tag("month-year")
-public class InternalMonthYear extends ReactAdapterComponent {
+public class InternalMonthYear extends ReactAdapterComponent implements HasLabel, HasHelper {
     public InternalMonthYear() {
         YearMonth now = YearMonth.now();
         setYear(now.getYear());
@@ -36,7 +41,6 @@ public class InternalMonthYear extends ReactAdapterComponent {
             changeListener.accept(YearMonth.of(year, getMonth()));
         });
         addStateChangeListener("month", Integer.class, month -> {
-            System.out.println("Month changed");
             changeListener.accept(YearMonth.of(getYear(), month));
         });
     }
