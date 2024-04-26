@@ -27,11 +27,17 @@ public class MonthYearView extends VerticalLayout {
     private Span span = new Span();
 
     public MonthYearView() {
-        binder.bindInstanceFields(this);
+        binder.forField(startMonthYear)
+                .asRequired("Start Month Year is required")
+                .withValidator(d -> {
+                    return d.getYear() == 2024;
+                }, "2024 is the only valid year").bind("startMonthYear");
+        binder.forField(endMonthYear).bind("endMonthYear");
         binder.setBean(new DataBean());
         add(new HorizontalLayout(startMonthYear, endMonthYear), span);
         startMonthYear.setLabel("Start Date");
         startMonthYear.setHelperText("Helper text");
+        endMonthYear.setLabel("End Date");
         startMonthYear.addValueChangeListener(e -> {
             if (e.isFromClient()) {
                 Notification.show("Value updated from the client " + e.getValue().toString());

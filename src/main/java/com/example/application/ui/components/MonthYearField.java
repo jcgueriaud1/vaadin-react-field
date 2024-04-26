@@ -6,10 +6,11 @@ import com.vaadin.flow.component.AbstractCompositeField;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasHelper;
 import com.vaadin.flow.component.HasLabel;
+import com.vaadin.flow.component.HasValidation;
 import com.vaadin.flow.component.dependency.CssImport;
 
 public class MonthYearField
-        extends AbstractCompositeField<InternalMonthYear, MonthYearField, YearMonth> implements HasLabel, HasHelper {
+        extends AbstractCompositeField<InternalMonthYear, MonthYearField, YearMonth> implements HasLabel, HasHelper, HasValidation {
 
     public MonthYearField() {
         this(YearMonth.now());
@@ -44,7 +45,6 @@ public class MonthYearField
 
     @Override
     protected boolean valueEquals(YearMonth value1, YearMonth value2) {
-        System.out.println("valueEquals");
         return super.valueEquals(value1, value2);
     }
 
@@ -71,5 +71,30 @@ public class MonthYearField
     @Override
     public String getHelperText() {
         return getContent().getHelperText();
+    }
+
+    @Override
+    public void setErrorMessage(String errorMessage) {
+        getContent().setErrorMessage(errorMessage);
+    }
+
+    @Override
+    public String getErrorMessage() {
+        return getContent().getErrorMessage();
+    }
+
+    @Override
+    public void setInvalid(boolean invalid) {
+        getContent().setInvalid(invalid);
+    }
+
+    @Override
+    public boolean isInvalid() {
+        return getContent().isInvalid();
+    }
+
+    @Override
+    public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {
+        getContent().setRequiredIndicatorVisible(requiredIndicatorVisible);
     }
 }

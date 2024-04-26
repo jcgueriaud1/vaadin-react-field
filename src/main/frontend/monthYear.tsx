@@ -11,11 +11,16 @@ class MonthYear extends ReactAdapterElement {
         const [syear, setYear] = hooks.useState<number>("year");
         const [slabel] = hooks.useState<string>("label", "");
         const [shelperText] = hooks.useState<string>("helperText", "");
+        const [serrorMessage] = hooks.useState<string>("errorMessage", "");
+        const [srequired] = hooks.useState<boolean>("required", false);
+        const [sinvalid] = hooks.useState<boolean>("invalid", false);
         return <div className="month-year-custom">
              <CustomField
             label={slabel}
             helperText={shelperText}
-            required
+            required={srequired}
+            invalid={sinvalid}
+            errorMessage={serrorMessage}
         >
                  <MonthYearPicker
                      selectedMonth={smonth}

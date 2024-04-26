@@ -2,7 +2,11 @@
 
 This project shows an example of how a Month Year calendar written in React can be integrated as a Flow Field that can be used in the Binder.
 
-It doesn't manage the state (invalid, error message on the client side), it's mainly focus on the synchronization of the value.
+It manages:
+- label
+- helper text
+- not helper component
+- invalid state, error message and required indicator (there is still some issues)
 
 ## Running the application
 
