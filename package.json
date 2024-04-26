@@ -28,6 +28,7 @@
     "proj4": "2.11.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-month-year-picker": "^1.0.1",
     "react-router-dom": "6.22.3"
   },
   "devDependencies": {
@@ -117,7 +118,7 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "168e2448f1dda9977bbe638c0b40e84cc0c7b059bbe766f48ab1b977ad237219"
+    "hash": "650e9398a5ddc4cb20534a47e0b858e82e290dfe5709312fce8b249491a61ed6"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
@@ -156,6 +157,7 @@
     "@vaadin/hilla-frontend": "$@vaadin/hilla-frontend",
     "@vaadin/hilla-file-router": "$@vaadin/hilla-file-router",
     "@vaadin/hilla-react-signals": "$@vaadin/hilla-react-signals",
-    "@vaadin/hilla-react-i18n": "$@vaadin/hilla-react-i18n"
+    "@vaadin/hilla-react-i18n": "$@vaadin/hilla-react-i18n",
+    "react-month-year-picker": "$react-month-year-picker"
   }
 }
