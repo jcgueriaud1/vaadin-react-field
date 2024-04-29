@@ -8,6 +8,8 @@ It manages:
 - not helper component
 - invalid state, error message and required indicator (there is still some issues)
 
+You can also see an example of a Lit integration and see that the Java wrapper is almost the same with the interface `IReactAdapterComponent`.
+
 ## Running the application
 
 The project is a standard Maven project. To run it from the command line,
