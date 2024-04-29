@@ -100,6 +100,8 @@ export class VcfMonthPicker extends ElementMixin(
 
   private __boundRenderOverlay = this.__renderOverlay.bind(this);
 
+  private __boundCheckValidity = this.__checkValidity.bind(this);
+
   private __dispatchChange = false;
 
   static get styles() {
@@ -142,8 +144,6 @@ export class VcfMonthPicker extends ElementMixin(
 
   render() {
     return html`
-      <vaadin-text-field label="Your name"
-                         ?invalid=${this.invalid} .errorMessage="${this.errorMessage}"></vaadin-text-field>
       <vaadin-text-field
         id="textField"
         value=${this.formattedValue}
@@ -279,4 +279,18 @@ export class VcfMonthPicker extends ElementMixin(
     this.opened = false;
   }
 
+  protected firstUpdated() {
+    // remove the client validation of the text field
+    this.textField!.checkValidity = this.__boundCheckValidity;
+  }
+
+  private __checkValidity() {
+    if (this.invalid) {
+      return false;
+    }
+    if (this.required) {
+      return (this.value !== '');
+    }
+    return true;
+  }
 }

@@ -19,8 +19,20 @@ public class ReactMonthYearField
 
     public ReactMonthYearField() {
         super("value", null, String.class,
-                (String p) -> YearMonth.parse(p),
-                (YearMonth ym) -> ym.toString());
+                (String p) -> {
+                    try {
+                        return YearMonth.parse(p);
+                    } catch (Exception e) {
+                        return null;
+                    }
+                },
+                (YearMonth ym) -> {
+                    if (ym != null) {
+                        return ym.toString();
+                    } else {
+                        return "";
+                    }
+                });
     }
 
     public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {

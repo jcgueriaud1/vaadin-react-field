@@ -41,10 +41,11 @@ public class LitMonthYearView extends VerticalLayout {
         startMonthYear.setHelperText("Helper text");
         endMonthYear.setLabel("End Date");
         startMonthYear.addValueChangeListener(e -> {
+            String s = (e.getValue() == null) ? "NULL" : e.getValue().toString();
             if (e.isFromClient()) {
-                Notification.show("Value updated from the client " + e.getValue().toString());
+                Notification.show("Value updated from the client " + s);
             } else {
-                Notification.show("Value updated from the server " + e.getValue().toString());
+                Notification.show("Value updated from the server " + s);
             }
         });
         add(new HorizontalLayout(new Button("Commit changes", e -> {

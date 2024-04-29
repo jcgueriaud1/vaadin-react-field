@@ -2,14 +2,11 @@ package com.example.application.ui.lit;
 
 import java.time.YearMonth;
 
-import com.example.application.ui.react.prototype.IReactAdapterComponent;
-
 import com.vaadin.flow.component.AbstractSinglePropertyField;
 import com.vaadin.flow.component.HasHelper;
 import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.HasValidation;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 
 @JsModule("./month-year/vcf-month-picker.ts")
@@ -19,8 +16,20 @@ public class LitMonthYearField
 
     public LitMonthYearField() {
         super("value", null, String.class,
-                (String p) -> YearMonth.parse(p),
-                (YearMonth ym) -> ym.toString());
+                (String p) -> {
+            try {
+                return YearMonth.parse(p);
+            } catch (Exception e) {
+                return null;
+            }
+                },
+                (YearMonth ym) -> {
+                    if (ym != null) {
+                        return ym.toString();
+                    } else {
+                        return "";
+                    }
+                });
     }
 
     public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {
@@ -53,5 +62,4 @@ public class LitMonthYearField
     public boolean isInvalid() {
         return getElement().getProperty("invalid", false);
     }
-
 }
