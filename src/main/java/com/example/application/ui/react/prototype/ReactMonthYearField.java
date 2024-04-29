@@ -35,14 +35,6 @@ public class ReactMonthYearField
                 });
     }
 
-    public void setRequiredIndicatorVisible(boolean requiredIndicatorVisible) {
-        getElement().setProperty("required", requiredIndicatorVisible);
-    }
-
-    public boolean isRequiredIndicatorVisible() {
-        return getElement().getProperty("required", false);
-    }
-
     @Override
     public void setErrorMessage(String errorMessage) {
         getElement().setProperty("errorMessage", errorMessage);
