@@ -28,8 +28,6 @@ class MonthYear extends ReactAdapterElement {
 
     protected render(hooks: RenderHooks): ReactElement {
         const [svalue, setValue] = hooks.useState<string>("value");
-        const [smonth, setMonth] = hooks.useState<number>("month");
-        const [syear, setYear] = hooks.useState<number>("year");
         const [slabel] = hooks.useState<string>("label", "");
         const [shelperText] = hooks.useState<string>("helperText", "");
         const [serrorMessage] = hooks.useState<string>("errorMessage", "");

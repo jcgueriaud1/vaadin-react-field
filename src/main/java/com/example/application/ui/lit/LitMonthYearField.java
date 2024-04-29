@@ -1,4 +1,4 @@
-package com.example.application.ui.react.prototype;
+package com.example.application.ui.lit;
 
 import java.time.YearMonth;
 
@@ -7,24 +7,21 @@ import com.vaadin.flow.component.HasHelper;
 import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.HasValidation;
 import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.dependency.JsModule;
 
-@CssImport("./monthYear.css")
-@JsModule("./monthYear.tsx")
-@Tag("react-month-year")
-public class ReactMonthYearField
-        extends AbstractSinglePropertyField<ReactMonthYearField, YearMonth>
-        implements HasLabel, HasHelper, HasValidation, IReactAdapterComponent {
+@JsModule("./month-year/vcf-month-picker.ts")
+@Tag("vcf-month-picker")
+public class LitMonthYearField
+        extends AbstractSinglePropertyField<LitMonthYearField, YearMonth> implements HasLabel, HasHelper, HasValidation {
 
-    public ReactMonthYearField() {
+    public LitMonthYearField() {
         super("value", null, String.class,
                 (String p) -> {
-                    try {
-                        return YearMonth.parse(p);
-                    } catch (Exception e) {
-                        return null;
-                    }
+            try {
+                return YearMonth.parse(p);
+            } catch (Exception e) {
+                return null;
+            }
                 },
                 (YearMonth ym) -> {
                     if (ym != null) {
@@ -57,5 +54,4 @@ public class ReactMonthYearField
     public boolean isInvalid() {
         return getElement().getProperty("invalid", false);
     }
-
 }
