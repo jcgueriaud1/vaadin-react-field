@@ -2,7 +2,8 @@ package com.example.application.ui.views;
 
 import java.time.YearMonth;
 
-import com.example.application.ui.components.MonthYearField;
+import com.example.application.ui.react.components.MonthYearField;
+import com.example.application.ui.react.prototype.ReactMonthYearField;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Span;
@@ -14,13 +15,13 @@ import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@PageTitle("Month Year")
-@Route(value = "month-year")
+@PageTitle("React Month Year")
+@Route(value = "react-month-year")
 @Menu(title = "React integration")
 public class MonthYearView extends VerticalLayout {
 
-    private MonthYearField startMonthYear = new MonthYearField();
-    private MonthYearField endMonthYear = new MonthYearField();
+    private ReactMonthYearField startMonthYear = new ReactMonthYearField();
+    private ReactMonthYearField endMonthYear = new ReactMonthYearField();
 
     private Binder<DataBean> binder = new Binder<>(DataBean.class);
 

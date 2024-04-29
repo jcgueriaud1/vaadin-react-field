@@ -1,4 +1,4 @@
-package com.example.application.ui.components;
+package com.example.application.ui.react.components;
 
 import java.time.YearMonth;
 
@@ -7,7 +7,6 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.HasHelper;
 import com.vaadin.flow.component.HasLabel;
 import com.vaadin.flow.component.HasValidation;
-import com.vaadin.flow.component.dependency.CssImport;
 
 public class MonthYearField
         extends AbstractCompositeField<InternalMonthYear, MonthYearField, YearMonth> implements HasLabel, HasHelper, HasValidation {
@@ -29,7 +28,7 @@ public class MonthYearField
     @Override
     protected InternalMonthYear initContent() {
         InternalMonthYear internalMonthYear = new InternalMonthYear();
-        internalMonthYear.addYearMonthChangeListener(yearMonth -> setModelValue(yearMonth, true));
+        internalMonthYear.addValueChangeListener(yearMonth -> setModelValue(yearMonth, true));
         return internalMonthYear;
     }
 
@@ -38,8 +37,9 @@ public class MonthYearField
         System.out.println("START setPresentationValue");
         if (newPresentationValue != null) {
             System.out.println("setPresentationValue");
-            getContent().setMonth(newPresentationValue.getMonthValue());
-            getContent().setYear(newPresentationValue.getYear());
+            getContent().setValue(newPresentationValue.toString());
+/*            getContent().setMonth(newPresentationValue.getMonthValue());
+            getContent().setYear(newPresentationValue.getYear());*/
         }
     }
 
