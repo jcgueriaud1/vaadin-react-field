@@ -21,6 +21,8 @@ export default function HelloWorldView() {
           onValueChanged={(e) => {
             name.value = e.detail.value;
           }}
+          invalid
+          errorMessage="Please enter your name"
         />
         <Button
           onClick={async () => {

@@ -34,12 +34,8 @@ public class MonthYearField
 
     @Override
     protected void setPresentationValue(YearMonth newPresentationValue) {
-        System.out.println("START setPresentationValue");
         if (newPresentationValue != null) {
-            System.out.println("setPresentationValue");
             getContent().setValue(newPresentationValue.toString());
-/*            getContent().setMonth(newPresentationValue.getMonthValue());
-            getContent().setYear(newPresentationValue.getYear());*/
         }
     }
 
