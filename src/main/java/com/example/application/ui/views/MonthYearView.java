@@ -5,6 +5,7 @@ import java.time.YearMonth;
 import com.example.application.ui.react.components.MonthYearField;
 import com.example.application.ui.react.prototype.ReactMonthYearField;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.notification.Notification;
@@ -53,8 +54,29 @@ public class MonthYearView extends VerticalLayout {
             } else {
                 span.setText("Invalid");
             }
-        }), new Button("Update start year to 2020", e -> { startMonthYear.setValue(YearMonth.of(2020, startMonthYear.getValue().getMonthValue()));
-        })));
+        }),
+                new Button("Update start year to 2020", e -> {
+                    startMonthYear.setValue(YearMonth.of(2020, startMonthYear.getValue().getMonthValue()));
+                }),
+                // simple example with PUSH
+                new Button("Update start year to 2020 (PUSHED)", e -> {
+                    UI ui = getUI().get();
+                    new Thread(
+                            () -> {
+                                try {
+                                    Thread.sleep(5_000);
+                                } catch (InterruptedException ex) {
+                                    throw new RuntimeException(ex);
+                                }
+                                ui.access(() -> {
+                                    startMonthYear.setValue(YearMonth.of(2020, startMonthYear.getValue().getMonthValue()));
+                                    ui.push();
+
+                                });
+                            }
+                    ).start();
+                })
+        ));
     }
 
 }
