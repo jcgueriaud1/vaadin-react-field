@@ -15,14 +15,18 @@
  */
 package com.example.application.ui.react.prototype;
 
+import java.util.HashMap;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.dom.DomListenerRegistration;
+import com.vaadin.flow.dom.Element;
 import com.vaadin.flow.function.SerializableConsumer;
 import com.vaadin.flow.function.SerializableFunction;
 import com.vaadin.flow.internal.JsonCodec;
 import com.vaadin.flow.internal.JsonUtils;
+import com.vaadin.flow.internal.nodefeature.NodeProperties;
 
 import elemental.json.Json;
 import elemental.json.JsonValue;
@@ -204,6 +208,22 @@ public interface IReactAdapterComponent extends HasElement {
                     T newState = jsonReader.apply(newStateJson);
                     listener.accept(newState);
                 }));
+    }
+
+    /**
+     * Get the Flow container element that is set up in React template for given
+     * name attribute.
+     *
+     * @param name
+     *            the name attribute for the container element
+     * @return Element for the Flow container under ReactAdapter element
+     */
+    public default Element getContentElement(String name) {
+            var element = new Element("flow-content-container");
+            getElement().getStateProvider().appendVirtualChild(
+                    getElement().getNode(), element,
+                    NodeProperties.INJECT_BY_NAME, name);
+            return element;
     }
 
 }
